@@ -3,11 +3,11 @@ package com.che.studyreclclerview;
 /**
  * 作者：余天然 on 16/7/14 下午1:37
  */
-public class MyBean {
+public class SimpleBean {
     int icon;
     String name;
 
-    public MyBean(int icon, String name) {
+    public SimpleBean(int icon, String name) {
         this.icon = icon;
         this.name = name;
     }

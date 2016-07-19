@@ -1,4 +1,4 @@
-package com.che.studyreclclerview.util;
+package com.che.studyreclclerview.superadapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,9 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 作者：余天然 on 16/7/14 下午2:32
+ * 单布局的Adapter
+ * ---------------
+ * 数据类型是泛型
  */
-public abstract class SingleAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
+public abstract class SingleAdapter<T> extends RecyclerView.Adapter<SuperViewHolder> {
 
     private Context context;
     private LayoutInflater inflater;
@@ -24,17 +26,14 @@ public abstract class SingleAdapter<T> extends RecyclerView.Adapter<ViewHolder> 
         this.layoutId = layoutId;
     }
 
-    public Context getContext() {
-        return context;
+
+    @Override
+    public SuperViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new SuperViewHolder(inflater.inflate(layoutId, parent, false));
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(inflater.inflate(layoutId, parent, false));
-    }
-
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(SuperViewHolder holder, int position) {
         bindData(holder, items.get(position));
     }
 
@@ -43,11 +42,14 @@ public abstract class SingleAdapter<T> extends RecyclerView.Adapter<ViewHolder> 
         return items.size();
     }
 
-    protected abstract void bindData(ViewHolder holder, T item);
+    public Context getContext() {
+        return context;
+    }
 
     public void setData(List<T> list) {
         this.items = list;
         notifyDataSetChanged();
     }
 
+    protected abstract void bindData(SuperViewHolder holder, T item);
 }
