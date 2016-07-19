@@ -30,9 +30,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-//        testSimpleAdapter();
+        testSimpleAdapter();
 //        testSingleAdapter();
-        testMultiAdapter();
+//        testMultiAdapter();
 //        testSuperAdapter();
 //        testSuperAdapter02();
     }
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
     private void testSuperAdapter() {
         rvContent = (RecyclerView) findViewById(R.id.rv_content);
         rvContent.setLayoutManager(new LinearLayoutManager(this));
-        int[] layoutIds = {R.layout.item_simple,R.layout.item_super,};
+        int[] layoutIds = {R.layout.item_simple, R.layout.item_super,};
         SuperAdapter adapter = new SuperAdapter(this, layoutIds);
         rvContent.setAdapter(adapter);
 
@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         rvContent.setLayoutManager(gridLayoutManager);
-        int[] layoutIds = {R.layout.item_simple,R.layout.item_super,};
+        int[] layoutIds = {R.layout.item_simple, R.layout.item_super,};
         SuperAdapter adapter = new SuperAdapter(this, layoutIds);
         rvContent.setAdapter(adapter);
 
